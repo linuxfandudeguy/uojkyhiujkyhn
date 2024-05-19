@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insecure Website</title>
+<style>
+/* CSS to make the website appear vulnerable */
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+h2.subtitle {
+    color: #777;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+textarea, input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+</style>
+</head>
+<body>
+<h1>Welcome to the Insecure Website!</h1>
+<h2 class="subtitle">This website is for educational purposes only. It is used for testing SQL injections and XSS vulnerabilities for white hat hackers.</h2>
+<hr>
+
+<!-- Login form -->
+<h2>Login</h2>
+<form id="login-form" action="#">
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username"><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password"><br>
+    <button type="submit">Login</button>
+</form>
+<div id="login-message"></div>
+
+<hr>
+
+<!-- Search form -->
+<h2>Search</h2>
+<form id="search-form" action="#">
+    <label for="query">Search:</label><br>
+    <input type="text" id="query" name="query"><br>
+    <button type="submit">Search</button>
+</form>
+<div id="search-results"></div>
+
+<hr>
+
+<!-- Profile form -->
+<h2>Update Status</h2>
+<form id="status-form" action="#">
+    <label for="status">New Status:</label><br>
+    <textarea id="status" name="status" rows="4" cols="50"></textarea><br>
+    <button type="submit">Update Status</button>
+</form>
+<div id="status-message"></div>
+
+<hr>
+
+<!-- Comment form -->
+<h2>Leave a Comment</h2>
+<form id="comment-form" action="#">
+    <label for="comment">Comment:</label><br>
+    <textarea id="comment" name="comment" rows="4" cols="50"></textarea><br>
+    <button type="submit">Submit</button>
+</form>
+<div id="comments"></div>
+
+<script>
+// Function to handle login form submission
+document.getElementById('login-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var username = document.getElementById('username').value;
+    document.getElementById('login-message').innerHTML = '<p>Welcome, ' + username + '!</p>';
+});
+
+// Function to handle search form submission
+document.getElementById('search-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var query = document.getElementById('query').value;
+    document.getElementById('search-results').innerHTML = '<p>Search results for: ' + query + '</p>';
+});
+
+// Function to handle status form submission
+document.getElementById('status-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var status = document.getElementById('status').value;
+    document.getElementById('status-message').innerHTML = '<p>Status updated: ' + status + '</p>';
+});
+
+// Function to handle comment form submission
+document.getElementById('comment-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var comment = document.getElementById('comment').value;
+    document.getElementById('comments').innerHTML += '<p>' + comment + '</p>';
+});
+</script>
+
+</body>
+</html>
